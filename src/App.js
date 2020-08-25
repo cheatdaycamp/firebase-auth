@@ -10,19 +10,20 @@ class App extends Component {
     this.state = { isSignedIn: false };
   }
   componentDidMount = () => {
-    firebase.auth().onAuthStateChanged((user) => {
-      this.setState({ isSignedIn: true });
-    });
+    // firebase.auth().onAuthStateChanged((user) => {
+    //   this.setState({ isSignedIn: true });
+    // });
   };
 
   fireContextStore = {
     fireContent: new FireClass(),
   };
+
   render() {
-    const text = !this.state.isSignedIn ? (
-      <p>Not Signed</p>
-    ) : (
+    const text = this.state.isSignedIn ? (
       <p>{`Signed in :)`}</p>
+    ) : (
+      <p>Not Signed</p>
     );
     return (
       <FireContext.Provider>
